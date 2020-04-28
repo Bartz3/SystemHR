@@ -12,3 +12,6 @@ C:\TFS\SystemHR\UserInterface\obj\Debug\UserInterface.csproj.GenerateResource.ca
 C:\TFS\SystemHR\UserInterface\obj\Debug\UserInterface.csproj.CopyComplete
 C:\TFS\SystemHR\UserInterface\obj\Debug\SystemHR.exe
 C:\TFS\SystemHR\UserInterface\obj\Debug\SystemHR.pdb
+C:\TFS\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeeAddForm.resources
+C:\TFS\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseForm.resources
+C:\TFS\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseAddEditForm.resources

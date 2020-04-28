@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SystemHR.DataAccessLayer.Models;
 using SystemHR.DataAccessLayer.Models.Dictionaries;
 using SystemHR.DataAccessLayer.ViewModel;
+using SystemHR.UserInterface.Classes;
 using SystemHR.UserInterface.Helpers;
 
 namespace SystemHR.UserInterface.Forms.Employees
@@ -126,6 +127,26 @@ namespace SystemHR.UserInterface.Forms.Employees
 
         #endregion
         #region Events
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            EmployeeAddForm frm = new EmployeeAddForm();
+            frm.ReloadEmployees += (s, ea) =>
+            {
+                EmployeeEventArgs evetArgs = ea as EmployeeEventArgs;
+                if (evetArgs != null)
+                {
+                    EmployeeViewModel employee
+                        = MappingHelper.MapEmployeeModelToEmployeeViewModel(evetArgs.Employee);
+                    bsEmployees.Add(employee);
+
+                    dgvEmployees.ClearSelection();
+                    dgvEmployees.Rows[dgvEmployees.Rows.Count - 1].Selected = true;
+                }
+            };
+            frm.ShowDialog();
+
+        }
 
         private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
         {

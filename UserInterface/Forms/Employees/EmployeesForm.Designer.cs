@@ -161,6 +161,7 @@
             this.btnCreate.Text = "Dodaj";
             this.btnCreate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // tlpEmployees
             // 
