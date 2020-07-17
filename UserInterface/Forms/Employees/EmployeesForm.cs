@@ -148,6 +148,46 @@ namespace SystemHR.UserInterface.Forms.Employees
 
         }
 
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            int employeeId = Convert.ToInt32(dgvEmployees.CurrentRow.Cells["colId"].Value);
+            int selectedRowIndex = dgvEmployees.CurrentRow.Index;
+
+            EmployeeEditForm frm = new EmployeeEditForm(employeeId);
+            frm.ReloadEmployees += (s, ea) =>
+            {
+                EmployeeEventArgs evetArgs = ea as EmployeeEventArgs;
+                if (evetArgs != null)
+                {
+                    EmployeeViewModel employee
+                        = MappingHelper.MapEmployeeModelToEmployeeViewModel(evetArgs.Employee);
+                    bsEmployees[selectedRowIndex] = employee;
+                }
+            };
+            frm.ShowDialog();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int employeeId = Convert.ToInt32(dgvEmployees.CurrentRow.Cells["colId"].Value);
+            int selectedRowIndex = dgvEmployees.CurrentRow.Index;
+
+            // RemoveEmployee(employeeId);
+
+            EmployeeViewModel employee = fakeEmployees.Where(x => x.Id == employeeId).FirstOrDefault();
+            if (employee != null)
+            {
+                bsEmployees.Remove(employee);
+
+                if (dgvEmployees.Rows.Count > 1)
+                {
+                    dgvEmployees.ClearSelection();
+                    dgvEmployees.Rows[dgvEmployees.Rows.Count - 1].Selected = true;
+                }
+
+            }
+        }
+
         private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _instance = null;

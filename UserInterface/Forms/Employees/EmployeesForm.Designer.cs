@@ -113,6 +113,7 @@
             this.btnRemove.Text = "Usuń";
             this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDismiss
             // 
@@ -145,6 +146,7 @@
             this.btnModify.Text = "Modyfikuj";
             this.btnModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnCreate
             // 
