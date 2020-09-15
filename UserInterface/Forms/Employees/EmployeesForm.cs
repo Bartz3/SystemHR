@@ -7,15 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemHR.DataAccessLayer;
 using SystemHR.DataAccessLayer.Models;
 using SystemHR.DataAccessLayer.Models.Dictionaries;
 using SystemHR.DataAccessLayer.ViewModel;
 using SystemHR.UserInterface.Classes;
+using SystemHR.UserInterface.Forms.Base;
 using SystemHR.UserInterface.Helpers;
 
 namespace SystemHR.UserInterface.Forms.Employees
 {
-    public partial class EmployeesForm : Form
+    public partial class EmployeesForm : BaseForm
     {
         #region Fields
 
@@ -55,7 +57,8 @@ namespace SystemHR.UserInterface.Forms.Employees
         private EmployeesForm()
         {
             InitializeComponent();
-            fakeEmployees = GetFakeEmployees();
+            IEnumerable<EmployeeModel> employees = GlobalConfig.Connection.GetEmployees();
+            fakeEmployees = MappingHelper.MapEmployeeModelToEmployeeViewModel(employees);
             PrepareEmployeesData();
         }
 
